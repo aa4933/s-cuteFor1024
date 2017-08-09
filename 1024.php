@@ -11,8 +11,8 @@ require_once './lib/simple_html_dom.php';
 $UserAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 (KHTML, like Gecko) Mobile/14D27 MicroMessenger/6.5.5 NetType/3G Language/zh_CN';
 $time=1;
 
-for ($i=101;$i<150;$i++){
-    $url="http://cl.giit.us/thread0806.php?fid=15&search=&page=".$i;
+for ($i=1;$i<150;$i++){
+    $url="http://cl.friu.pw/thread0806.php?fid=15&search=&page=".$i;
 
     $ch = curl_init();
     echo "----------------------------开始进行筛选----------------------------\n";
@@ -25,7 +25,7 @@ for ($i=101;$i<150;$i++){
     curl_close($ch);
     $html = new simple_html_dom();
     $html->load($ret);
-    $title = $html->find('html body div div table tbody tr td a');
+    $title = $html->find('html body div div table tbody tr td h3 a');
     foreach ($title as $r) {
         $content = $r->innertext; // 获取标签里的所有内容，包括html标签
         //写入文件
